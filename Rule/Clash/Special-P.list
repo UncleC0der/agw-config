@@ -1,8 +1,12 @@
-# 内容：AI
+# Special
 # 域名关键字匹配
 # DOMAIN-KEYWORD,openai
 # DOMAIN-KEYWORD,anthropic
 # DOMAIN-KEYWORD,Claude
-# 域名后缀匹配
+
+# AI
 DOMAIN,traeide.com
 DOMAIN,trae.com
+
+# dmhy
+DOMAIN-SUFFIX,u2.dmhy.org

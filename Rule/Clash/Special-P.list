@@ -5,8 +5,8 @@
 # DOMAIN-KEYWORD,Claude
 
 # AI
-DOMAIN-KEYWORD,traeide
-DOMAIN-KEYWORD,trae
+# DOMAIN-KEYWORD,traeide
+DOMAIN-SUFFIX,trae.ai
 
 # dmhy
 DOMAIN-SUFFIX,u2.dmhy.org

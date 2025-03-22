@@ -8,5 +8,8 @@
 # DOMAIN-KEYWORD,traeide
 DOMAIN-SUFFIX,trae.ai
 
+# docker
+DOMAIN-SUFFIX,docker.io
+
 # dmhy
 DOMAIN-SUFFIX,u2.dmhy.org

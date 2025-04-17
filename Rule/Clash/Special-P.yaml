@@ -1,0 +1,18 @@
+payload:
+# Special
+# 域名关键字匹配
+# - DOMAIN-KEYWORD,openai
+# - DOMAIN-KEYWORD,anthropic
+# - DOMAIN-KEYWORD,claude
+
+# AI
+- DOMAIN-KEYWORD,traeide
+- DOMAIN-SUFFIX,trae.ai
+
+# docker
+- DOMAIN-SUFFIX,docker.io
+
+# dmhy
+- DOMAIN-SUFFIX,u2.dmhy.org
+
+

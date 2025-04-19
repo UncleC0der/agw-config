@@ -1,12 +1,12 @@
 payload:
   # United States of America mnc***.mcc***.pub.3gppnetwork.org
-  - mcc310.pub.3gppnetwork.org
-  - mcc311.pub.3gppnetwork.org
-  - mcc312.pub.3gppnetwork.org
-  - mcc313.pub.3gppnetwork.org
-  - mcc314.pub.3gppnetwork.org
-  - mcc315.pub.3gppnetwork.org
-  - mcc316.pub.3gppnetwork.org
+  - DOMAIN-SUFFIX,mcc310.pub.3gppnetwork.org
+  - DOMAIN-SUFFIX,mcc311.pub.3gppnetwork.org
+  - DOMAIN-SUFFIX,mcc312.pub.3gppnetwork.org
+  - DOMAIN-SUFFIX,mcc313.pub.3gppnetwork.org
+  - DOMAIN-SUFFIX,mcc314.pub.3gppnetwork.org
+  - DOMAIN-SUFFIX,mcc315.pub.3gppnetwork.org
+  - DOMAIN-SUFFIX,mcc316.pub.3gppnetwork.org
 
 
   # AT&T

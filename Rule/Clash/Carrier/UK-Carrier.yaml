@@ -1,6 +1,6 @@
 payload:
   # United Kingdom mnc***.mcc***.pub.3gppnetwork.org
-  - mcc234.pub.3gppnetwork.org
+  - DOMAIN-SUFFIX,mcc234.pub.3gppnetwork.org
 
   # 地区检测
   - DOMAIN-SUFFIX,gspe1-ssl.ls.apple.com

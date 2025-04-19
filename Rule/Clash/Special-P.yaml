@@ -15,4 +15,7 @@ payload:
   # dmhy
   - DOMAIN-SUFFIX,u2.dmhy.org
 
+  # 代理
+  - DOMAIN-SUFFIX,shuzijumin.com
+
 

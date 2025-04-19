@@ -1,0 +1,6 @@
+payload:
+  # Hong Kong mnc***.mcc***.pub.3gppnetwork.org
+  - mcc454.pub.3gppnetwork.org
+
+  - DOMAIN-SUFFIX, csl.prod.ondemandconnectivity.com
+  - DOMAIN-SUFFIX, hhk.prod.ondemandconnectivity.com

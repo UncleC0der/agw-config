@@ -11,11 +11,31 @@ payload:
 
   # docker
   - DOMAIN-SUFFIX,docker.io
+  - DOMAIN-SUFFIX, docker.com
+  - DOMAIN, registry.hub.docker.com
 
   # dmhy
   - DOMAIN-SUFFIX,u2.dmhy.org
 
   # 代理
-  - DOMAIN-SUFFIX,shuzijumin.com
+  - DOMAIN-SUFFIX, ovh.ie
+  - DOMAIN-SUFFIX, ovh.com
+  - DOMAIN-SUFFIX, star-space.net
+  - DOMAIN-SUFFIX, ovhcloud.com
+  - DOMAIN-SUFFIX, oneprovider.com
+  - DOMAIN-SUFFIX, kimoji.club
+  - DOMAIN-SUFFIX, monikadesign.uk
+  - DOMAIN-SUFFIX, bulianglin.com
+  - DOMAIN-SUFFIX, 23img.com
+  - DOMAIN-SUFFIX, lefu.men
+  - DOMAIN-SUFFIX, one.nz
+  - DOMAIN-SUFFIX, mcc-mnc-list.com
+  - DOMAIN-SUFFIX, dashlane.com
+  - DOMAIN-SUFFIX, htx.com
+  - DOMAIN-SUFFIX, zendesk.com
+  - DOMAIN-SUFFIX, redotpay.com
+  - DOMAIN-SUFFIX, shuzijumin.com
+  - DOMAIN-SUFFIX, buliang0.cf
+  - DOMAIN-SUFFIX, nnr.moe
 
 

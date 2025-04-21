@@ -1,0 +1,40 @@
+# https://github.com/iniwex5/tools/blob/main/rules/bybit.list
+# https://github.com/Rongwuyou/Surge/blob/main/Bybit
+# https://github.com/hejaxian/Clash_Rule/blob/main/bybit.txt
+
+payload:
+  - DOMAIN, bybit-exchange.github.io
+  - DOMAIN, bybit.ada.support
+  - DOMAIN-SUFFIX,byabcde.com
+  - DOMAIN-SUFFIX,byapis.com
+  - DOMAIN-SUFFIX,byapps.net
+  - DOMAIN-SUFFIX,bybdc6.com
+  - DOMAIN-SUFFIX,bybit-global.com
+  - DOMAIN-SUFFIX,bybit.biz
+  - DOMAIN-SUFFIX,bybit.cloud
+  - DOMAIN-SUFFIX,bybit.com
+  - DOMAIN-SUFFIX,bycbe.com
+  - DOMAIN-SUFFIX,bycsi.com
+  - DOMAIN-SUFFIX,byd3c3.com
+  - DOMAIN-SUFFIX,bymj.io
+  - DOMAIN-SUFFIX,bytick.com
+  - DOMAIN-SUFFIX,bitverse.zone
+  - DOMAIN-SUFFIX,bybit-aws.com
+  - DOMAIN-SUFFIX,bybit.org
+  - DOMAIN-SUFFIX,bybitglobal.com
+  - DOMAIN-SUFFIX,byffbb.com
+  - DOMAIN-SUFFIX,ffbbbdc6d3c353211fe2ba39c9f744cd.com
+  - DOMAIN-SUFFIX,ffe390afd658c19dcbf707e0597b846d.de
+  - DOMAIN-SUFFIX,onelink.me
+  - DOMAIN-KEYWORD,appsflyersdk
+  - DOMAIN-KEYWORD,bitverse
+  - DOMAIN-KEYWORD,byabcde
+  - DOMAIN-KEYWORD,byapis
+  - DOMAIN-KEYWORD,bybdc6
+  - DOMAIN-KEYWORD,bybit
+  - DOMAIN-KEYWORD,bycbe
+  - DOMAIN-KEYWORD,bycsi
+  - DOMAIN-KEYWORD,byd3c3
+  - DOMAIN-KEYWORD,bytick
+  - DOMAIN-KEYWORD,geetest
+  - DOMAIN-KEYWORD,myfin

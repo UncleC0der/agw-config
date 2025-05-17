@@ -8,7 +8,6 @@ payload:
   - DOMAIN-SUFFIX,mcc315.pub.3gppnetwork.org
   - DOMAIN-SUFFIX,mcc316.pub.3gppnetwork.org
 
-
   # AT&T
   - DOMAIN-SUFFIX,ipass.att.com
   - DOMAIN-SUFFIX,portal8.att.com
@@ -22,12 +21,12 @@ payload:
   - DOMAIN-SUFFIX,vzw.voip.verizonwireless.com
 
   # T‑Mobile
-  - DOMAIN-SUFFIX,t‑mobile.com
-  - DOMAIN-SUFFIX,t‑mobile.net
-  - DOMAIN-SUFFIX,api.t‑mobile.com
+  - DOMAIN-SUFFIX,t-mobile.com
+  - DOMAIN-SUFFIX,t-mobile.net
+  - DOMAIN-SUFFIX,api.t-mobile.com
   - IP-CIDR,66.94.0.0/19,no-resolve
   - IP-CIDR,206.29.177.36/32,no-resolve
-  - IP-CIDR,208.54.0.0/16,no-resolve
+  - IP-CIDR,208.54.0.0/16,no-resolve1
 
   # Ultra Mobile
   - DOMAIN-SUFFIX,optimizely.com

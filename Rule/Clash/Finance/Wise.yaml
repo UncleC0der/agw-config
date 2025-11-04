@@ -1,0 +1,10 @@
+payload:
+  - DOMAIN-SUFFIX,wise.com
+  - DOMAIN-SUFFIX,transferwise.com
+  - DOMAIN-SUFFIX,wise-static.com
+  - DOMAIN-SUFFIX,wise.tools
+  - DOMAIN-SUFFIX,wisepayments.net
+  - DOMAIN-SUFFIX,auth0.com
+  - DOMAIN-SUFFIX,stripe.com
+#   - DOMAIN-SUFFIX,googleapis.com
+#   - DOMAIN-SUFFIX,googletagmanager.com

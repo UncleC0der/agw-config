@@ -1,8 +1,8 @@
-HOST-SUFFIX,shuzijumin.com,ForceProxy
-HOST-SUFFIX,uscardforum.com,ForceProxy
-HOST-SUFFIX,banknav.com,ForceProxy
-HOST-SUFFIX,linux.do,ForceProxy
+HOST-SUFFIX,shuzijumin.com,Force Proxy
+HOST-SUFFIX,uscardforum.com,Force Proxy
+HOST-SUFFIX,banknav.com,Force Proxy
+HOST-SUFFIX,linux.do,Force Proxy
 
-HOST-SUFFIX,metrobyt-mobile.com,ForceProxy
-HOST-SUFFIX,totalwireless.com,ForceProxy
-HOST-SUFFIX,cricketwireless.com,ForceProxy
+HOST-SUFFIX,metrobyt-mobile.com,Force Proxy
+HOST-SUFFIX,totalwireless.com,Force Proxy
+HOST-SUFFIX,cricketwireless.com,Force Proxy

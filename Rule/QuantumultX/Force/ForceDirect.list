@@ -1,3 +1,3 @@
-HOST, cn.bing.com, ForceDirect
-HOST-SUFFIX, binance.com, ForceDirect
-HOST, www.binance.info, ForceDirect
+HOST,cn.bing.com,Force Direct
+HOST-SUFFIX,binance.com,Force Direct
+HOST,www.binance.info,Force Direct

@@ -1,23 +1,4 @@
-
-# Special
-# 域名关键字匹配
-#DOMAIN-KEYWORD,openai
-#DOMAIN-KEYWORD,anthropic
-#DOMAIN-KEYWORD,claude
-
-# AI
-DOMAIN-KEYWORD,traeide
-DOMAIN-SUFFIX,trae.ai
-
-# docker
-DOMAIN-SUFFIX,docker.io
-DOMAIN-SUFFIX, docker.com
-DOMAIN, registry.hub.docker.com
-
-# dmhy
-DOMAIN-SUFFIX,u2.dmhy.org
-
-# 代理
+# Force_Proxy
 DOMAIN-SUFFIX, ovh.ie
 DOMAIN-SUFFIX, ovh.com
 DOMAIN-SUFFIX, star-space.net
@@ -37,4 +18,22 @@ DOMAIN-SUFFIX, redotpay.com
 DOMAIN-SUFFIX, shuzijumin.com
 DOMAIN-SUFFIX, buliang0.cf
 DOMAIN-SUFFIX, nnr.moe
+
+# AI
+#DOMAIN-KEYWORD,openai
+#DOMAIN-KEYWORD,anthropic
+#DOMAIN-KEYWORD,claude
+DOMAIN-KEYWORD,traeide
+DOMAIN-SUFFIX,trae.ai
+
+# docker
+DOMAIN-SUFFIX,docker.io
+DOMAIN-SUFFIX, docker.com
+DOMAIN, registry.hub.docker.com
+
+# PT
+## dmhy
+DOMAIN-SUFFIX,u2.dmhy.org
+
+
 

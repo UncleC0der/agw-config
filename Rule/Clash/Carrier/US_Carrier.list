@@ -1,0 +1,74 @@
+
+# United States of America mnc***.mcc***.pub.3gppnetwork.org
+DOMAIN-SUFFIX,mcc310.pub.3gppnetwork.org
+DOMAIN-SUFFIX,mcc311.pub.3gppnetwork.org
+DOMAIN-SUFFIX,mcc312.pub.3gppnetwork.org
+DOMAIN-SUFFIX,mcc313.pub.3gppnetwork.org
+DOMAIN-SUFFIX,mcc314.pub.3gppnetwork.org
+DOMAIN-SUFFIX,mcc315.pub.3gppnetwork.org
+DOMAIN-SUFFIX,mcc316.pub.3gppnetwork.org
+
+# google rcs
+# DOMAIN,rcs-acs-mcc310.jibe.google.com
+
+# AT&T
+DOMAIN-SUFFIX,ipass.att.com
+DOMAIN-SUFFIX,portal8.att.com
+DOMAIN-SUFFIX,att.com
+DOMAIN-SUFFIX,att.net
+DOMAIN-SUFFIX,epdg.epc.att.net
+DOMAIN-SUFFIX,sentitlement2.mobile.att.net
+DOMAIN-SUFFIX,vmm.mobile.att.net
+DOMAIN-SUFFIX,mmsc.mobile.att.net
+
+  # Verizon
+DOMAIN-SUFFIX,verizon.com
+DOMAIN-SUFFIX,vzw.com
+DOMAIN-SUFFIX,vzwapi.verizonwireless.com
+DOMAIN-SUFFIX,vzw.voip.verizonwireless.com
+DOMAIN-SUFFIX,wo.vzwwo.com
+DOMAIN-SUFFIX,sg.vzwfemto.com
+DOMAIN-KEYWORD, t-mobile
+DOMAIN-SUFFIX,optimizely.com
+DOMAIN-SUFFIX,redirect.ultra.me
+DOMAIN-SUFFIX,ultramobile.com
+
+  # T‑Mobile
+DOMAIN-SUFFIX,t-mobile.com
+DOMAIN-SUFFIX,t-mobile.net
+DOMAIN-SUFFIX,api.t-mobile.com
+DOMAIN-SUFFIX,t-mobile.idemia.io
+
+IP-CIDR,66.94.0.0/19,no-resolve
+IP-CIDR,206.29.177.36/32,no-resolve
+IP-CIDR,208.54.0.0/16,no-resolve1
+
+# Tello
+DOMAIN-SUFFIX,tello.com
+
+  # Ultra Mobile
+DOMAIN-SUFFIX,optimizely.com
+DOMAIN-SUFFIX,redirect.ultra.me
+DOMAIN-SUFFIX,ultramobile.com
+
+  # helium mobile
+DOMAIN-SUFFIX,hellohelium.com
+DOMAIN-SUFFIX,heliumwifi.com
+
+# talkatone
+DOMAIN-SUFFIX,mobilefuse.com
+DOMAIN-SUFFIX,inmobi.com
+DOMAIN-SUFFIX,crashlytics.com
+DOMAIN-SUFFIX,talkatone.com
+DOMAIN-SUFFIX,kochava.com
+DOMAIN-SUFFIX,tktn.be
+DOMAIN-SUFFIX,cohere.com
+DOMAIN-SUFFIX,ip-api.com
+DOMAIN-SUFFIX,agkn.com
+DOMAIN-SUFFIX,tktn.at
+DOMAIN-SUFFIX,inner-active.mobi
+IP-CIDR,50.117.27.0/24,no-resolve
+IP-CIDR,69.46.75.0/24,no-resolve
+IP-CIDR,205.164.56.0/24,no-resolve
+IP-CIDR,63.251.124.0/24,no-resolve
+IP-CIDR,216.172.154.0/24,no-resolve

@@ -1,0 +1,19 @@
+# Hong Kong mnc***.mcc***.pub.3gppnetwork.org
+DOMAIN-KEYWORD, mcc454
+
+# CSL ClubSIM
+DOMAIN-SUFFIX, csl.prod.ondemandconnectivity.com
+DOMAIN-SUFFIX, hhk.prod.ondemandconnectivity.com
+DOMAIN-SUFFIX, snr.prod.ondemandconnectivity.com
+
+# 3HK
+DOMAIN-SUFFIX,three.com.hk
+DOMAIN,device.three.com.hk
+DOMAIN,wlan.three.com.hk
+DOMAIN,datapath.three.com.hk
+
+DOMAIN-SUFFIX, epdg.epc.mnc000.mcc454.pub.3gppnetwork.org
+DOMAIN-SUFFIX, ss.epdg.epc.mnc000.mcc454.pub.3gppnetwork.org
+DOMAIN-SUFFIX, ss.epdg.epc.geo.mnc000.mcc454.pub.3gppnetwork.org
+
+IP-CIDR, 107.178.224.0/19,no-resolve

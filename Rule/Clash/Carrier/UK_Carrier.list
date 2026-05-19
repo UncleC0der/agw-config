@@ -1,0 +1,74 @@
+# United Kingdom mnc***.mcc***.pub.3gppnetwork.org
+DOMAIN-KEYWORD, mcc234
+
+# Vodafone UK Group (Vodafone, VOXI, Lebara, Talkmobile)
+DOMAIN-SUFFIX,vodafone.co.uk
+DOMAIN-SUFFIX,entsrv-uk.vodafone.com
+DOMAIN-SUFFIX,vuk-gto.prod.ondemandconnectivity.com
+IP-CIDR, 88.82.0.0/19,no-resolve
+IP-CIDR, 148.252.160.0/19,no-resolve
+IP-CIDR,212.183.0.0/19,no-resolve
+
+# EE / BT Group
+# 包含: EE, BT Mobile, 1pMobile, Lyca Mobile (新版), Utility Warehouse
+# 域名
+DOMAIN-SUFFIX,ee.co.uk
+DOMAIN-SUFFIX,bt.com
+# IP段 (AS2856 - BT/EE 核心网)
+# 31.94.x.x 是目前 EE VoWiFi 的主要出口
+IP-CIDR,31.94.0.0/16,no-resolve
+# 46.68.x.x 是 EE 的旧版/备用网关
+IP-CIDR,46.68.0.0/17,no-resolve
+# 109.249.x.x 也是 EE 的移动网关段
+IP-CIDR,109.249.128.0/17,no-resolve
+
+# VOXI
+IP-CIDR, 148.252.160.0/19
+DOMAIN, vfgb.idemia.io
+
+# CTE
+DOMAIN-SUFFIX, ee.co.uk
+IP-CIDR, 31.94.0.0/16
+
+# ==========================================
+# 🔵 O2 UK (Telefonica) Group
+# 包含: O2, Giffgaff, Tesco Mobile
+# ==========================================
+# 域名
+DOMAIN-SUFFIX,o2.co.uk
+DOMAIN-SUFFIX,telefonica.co.uk
+DOMAIN-SUFFIX,giffgaff.com
+# IP段 (AS13285 - TalkTalk/O2 Gateway & AS29180)
+# O2 的 ePDG 经常解析到 87.194.x.x
+IP-CIDR,87.194.0.0/16,no-resolve
+IP-CIDR,82.132.0.0/16,no-resolve
+# Tesco Mobile 有时使用特定段
+IP-CIDR,193.113.0.0/19,no-resolve
+# giffgaff
+IP-CIDR,87.194.0.0/19
+IP-CIDR,87.194.88.0/23
+
+# ==========================================
+# 🟣 Sky Mobile (基于 O2 但有独立核心网)
+# MNC: 57 (注意：Sky 是 Thick MVNO，有自己的网关)
+# ==========================================
+# 域名
+DOMAIN-SUFFIX,sky.com
+DOMAIN-KEYWORD,mnc057
+# IP段 (AS5607 - Sky UK)
+# Sky 的 ePDG 通常在 185.110.x.x
+IP-CIDR,185.110.176.0/22,no-resolve
+
+# ==========================================
+# ⚫ Three UK (Hutchison) Group
+# 包含: Three, Smarty, iD Mobile
+# ==========================================
+# 域名
+DOMAIN-SUFFIX,three.co.uk
+DOMAIN-SUFFIX,idmobile.co.uk
+DOMAIN-SUFFIX,smarty.co.uk
+# IP段 (AS206067 - H3G UK)
+# 185.153.237.x 是 Three 的主要 VoWiFi 入口
+IP-CIDR,185.153.236.0/22,no-resolve
+# 188.31.x.x 用于内部 DNS 和信令
+IP-CIDR,188.31.248.0/21,no-resolve

@@ -1,5 +1,7 @@
 # Force_Direct
 DOMAIN,cn.bing.com
+DOMAIN,www.bing.com
+
 
 # 镜像加速网站
 DOMAIN-SUFFIX,bkwt.eu.org

@@ -1,4 +1,3 @@
-
 # United States of America mnc***.mcc***.pub.3gppnetwork.org
 DOMAIN-SUFFIX,mcc310.pub.3gppnetwork.org
 DOMAIN-SUFFIX,mcc311.pub.3gppnetwork.org
@@ -10,6 +9,11 @@ DOMAIN-SUFFIX,mcc316.pub.3gppnetwork.org
 
 # google rcs
 # DOMAIN,rcs-acs-mcc310.jibe.google.com
+
+# 
+DOMAIN-SUFFIX,metrobyt-mobile.com
+DOMAIN-SUFFIX,totalwireless.com
+DOMAIN-SUFFIX,cricketwireless.com
 
 # AT&T
 DOMAIN-SUFFIX,ipass.att.com
@@ -46,12 +50,12 @@ IP-CIDR,208.54.0.0/16,no-resolve1
 # Tello
 DOMAIN-SUFFIX,tello.com
 
-  # Ultra Mobile
+# Ultra Mobile
 DOMAIN-SUFFIX,optimizely.com
 DOMAIN-SUFFIX,redirect.ultra.me
 DOMAIN-SUFFIX,ultramobile.com
 
-  # helium mobile
+# helium mobile
 DOMAIN-SUFFIX,hellohelium.com
 DOMAIN-SUFFIX,heliumwifi.com
 

@@ -15,7 +15,7 @@ DOMAIN-SUFFIX,sjtug.sjtu.edu.cn
 DOMAIN-SUFFIX,mirrors.nju.edu.cn
 
 # bank
-# hk
+## hk
 DOMAIN-SUFFIX,hsbc.com.hk
 DOMAIN-SUFFIX,za.group
 DOMAIN-SUFFIX,bochk.com

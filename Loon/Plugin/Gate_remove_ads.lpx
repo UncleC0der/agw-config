@@ -1,0 +1,8 @@
+#!name = Gate去广告
+#!desc = 拦截开机屏广告
+
+[Rewrite]
+^https:\/\/.+\/api\/app\/v1\/site\/launchGuideImage? reject-dict
+
+[MITM]
+hostname = app.bxjddjt.com, app.studiotv.net, app.zudanje.com, app.smartappnet.net, api-normal-v3.csrqoa.com

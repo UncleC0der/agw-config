@@ -9,15 +9,22 @@ DOMAIN-SUFFIX, monikadesign.uk
 DOMAIN-SUFFIX, bulianglin.com
 DOMAIN-SUFFIX, 23img.com
 DOMAIN-SUFFIX, lefu.men
-DOMAIN-SUFFIX, one.nz
-DOMAIN-SUFFIX, mcc-mnc-list.com
 DOMAIN-SUFFIX, dashlane.com
 DOMAIN-SUFFIX, htx.com
 DOMAIN-SUFFIX, zendesk.com
 DOMAIN-SUFFIX, redotpay.com
-DOMAIN-SUFFIX, shuzijumin.com
 DOMAIN-SUFFIX, buliang0.cf
 DOMAIN-SUFFIX, nnr.moe
+
+# Carrier
+DOMAIN-SUFFIX, one.nz
+DOMAIN-SUFFIX, mcc-mnc-list.com
+
+# Community
+DOMAIN-SUFFIX, shuzijumin.com
+DOMAIN-SUFFIX, nodeseek.com
+DOMAIN-SUFFIX, uscardforum.com
+DOMAIN-SUFFIX, banknav.com
 
 # AI
 #DOMAIN-KEYWORD,openai

@@ -1,0 +1,375 @@
+[General]
+ip-mode = v4-only
+ipv6-vif = off
+allow-wifi-access = false
+bypass-tun = 10.0.0.0/8,100.64.0.0/10,127.0.0.0/8,169.254.0.0/16,172.16.0.0/12,192.0.0.0/24,192.0.2.0/24,192.88.99.0/24,192.168.0.0/16,198.51.100.0/24,203.0.113.0/24,224.0.0.0/4,239.255.255.250/32,255.255.255.255/32
+disable-stun = true
+disconnect-on-policy-change = false
+udp-fallback-mode = REJECT
+dns-reject-mode = LoopbackIP
+#dns-server = 119.29.29.29,223.5.5.5
+dns-server = system
+doh-server = https://223.5.5.5/resolve,https://sm2.doh.pub/dns-query
+geoip-url = https://geodata.kelee.one/Country-Masaiki.mmdb
+ipasn-url = https://geodata.kelee.one/GeoLite2-ASN-P3TERX.mmdb
+interface-mode = auto
+internet-test-url = http://connectivitycheck.platform.hicloud.com/generate_204
+proxy-test-url = http://www.gstatic.com/generate_204
+resource-parser = https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store-parser.loon.min.js
+skip-proxy = 192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,localhost,*.local,captive.apple.com,e.crashlynatics.com
+sni-sniffing = true
+ssid-trigger = "default":rule, "cellular":rule,"Ccccccc":DIRECT
+switch-node-after-failure-times=3
+test-timeout = 5
+wifi-access-http-port = 7222
+wifi-access-socks5-port = 7221
+
+
+[Remote Filter]
+# 亚洲节点
+香港节点 = NameRegex, FilterKey = "^(?=.*((?i)🇭🇰|香港|港|HKT|(\b(HK|HKG|Hong|HongKong|Hong Kong)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+澳门节点 = NameRegex, FilterKey = "^(?=.*((?i)🇲🇴|澳门|澳門|(\b(MO|MAC|Macao|Macau)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+台湾节点 = NameRegex, FilterKey = "^(?=.*((?i)台湾|台灣|HINET|(\b(TW|TWN|Taiwan|Tai)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+日本节点 = NameRegex, FilterKey = "^(?=.*((?i)🇯🇵|日本|东京|大阪|川日|泉日|埼玉|(\b(JP|JPN|Japan)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+韩国节点 = NameRegex, FilterKey = "^(?=.*((?i)🇰🇷|韩国|韓国|韩|韓|首尔|(\b(KR|KOR|Korea)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+印度节点 = NameRegex, FilterKey = "^(?=.*((?i)🇮🇳|印度|(\b(IN|IND|India)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+土耳其节点 = NameRegex, FilterKey = "^(?=.*((?i)🇹🇷|土耳其|(\b(TR|TUR|Turkey|Türkiye)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+泰国节点 = NameRegex, FilterKey = "^(?=.*((?i)🇹🇭|泰国|泰國|(\b(TH|THA|Thailand)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+新加坡节点 = NameRegex, FilterKey = "^(?=.*((?i)🇸🇬|新加坡|狮城|狮|坡|(\b(SG|SGP|Singapore)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+菲律宾节点 = NameRegex, FilterKey = "^(?=.*((?i)🇵🇭|菲律宾|菲律賓|(\b(PH|PHL|Philippines)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+马来西亚节点 = NameRegex, FilterKey = "^(?=.*((?i)🇲🇾|马来西亚|馬來西亞|大马|馬來|(\b(MY|MYS|Malaysia)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+东南亚节点 = NameRegex, FilterKey = "^(?=.*((?i)🇸🇬|🇹🇭|🇵🇭|🇲🇾|新加坡|泰国|泰國|菲律宾|菲律賓|马来西亚|馬來西亞|(\b(SG|SGP|Singapore|TH|THA|Thailand|PH|PHL|Philippines|MY|MYS|Malaysia)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+
+# 北美洲节点
+北美节点 = NameRegex, FilterKey = "^(?=.*((?i)🇺🇸|🇨🇦|🇲🇽|美国|加拿大|墨西哥|(\b(US|USA|United States|CA|CAN|Canada|MX|MEX|Mexico)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+美国节点 = NameRegex, FilterKey = "^(?=.*((?i)🇺🇸|美国|美國|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|Misaka|(\b(US|USA|United States|America)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+加拿大节点 = NameRegex, FilterKey = "^(?=.*((?i)🇨🇦|加拿大|(\b(CA|CAN|Canada)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+墨西哥节点 = NameRegex, FilterKey = "^(?=.*((?i)🇲🇽|墨西哥|(\b(MX|MEX|Mexico)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+
+# 南美洲节点
+南美节点 = NameRegex, FilterKey = "^(?=.*((?i)🇧🇷|🇦🇷|巴西|阿根廷|(\b(BR|BRA|Brazil|AR|ARG|Argentina)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+巴西节点 = NameRegex, FilterKey = "^(?=.*((?i)🇧🇷|巴西|(\b(BR|BRA|Brazil)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+阿根廷节点 = NameRegex, FilterKey = "^(?=.*((?i)🇦🇷|阿根廷|(\b(AR|ARG|Argentina)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+
+# 欧洲节点
+欧洲节点 = NameRegex, FilterKey = "^(?=.*((?i)🇷🇺|🇩🇪|🇫🇷|🇬🇧|俄罗斯|俄羅斯|德国|德國|法国|法國|英国|英國|伦敦|法兰克福|(\b(RU|RUS|Russia|DE|DEU|Germany|FR|FRA|France|UK|GB|GBR|United Kingdom|England|London)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+俄罗斯节点 = NameRegex, FilterKey = "^(?=.*((?i)🇷🇺|俄罗斯|俄羅斯|俄国|俄國|莫斯科|(\b(RU|RUS|Russia|Moscow)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+德国节点 = NameRegex, FilterKey = "^(?=.*((?i)🇩🇪|德国|德國|法兰克福|法蘭克福|(\b(DE|DEU|Germany|Frankfurt)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+法国节点 = NameRegex, FilterKey = "^(?=.*((?i)🇫🇷|法国|法國|巴黎|(\b(FR|FRA|France|Paris)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+英国节点 = NameRegex, FilterKey = "^(?=.*((?i)🇬🇧|英国|英國|伦敦|倫敦|(\b(UK|GB|GBR|United Kingdom|England|London)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+
+# 非洲节点
+非洲节点 = NameRegex, FilterKey = "^(?=.*((?i)🇳🇬|尼日利亚|尼日利亞|(\b(NG|NGA|Nigeria)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+尼日利亚节点 = NameRegex, FilterKey = "^(?=.*((?i)🇳🇬|尼日利亚|尼日利亞|(\b(NG|NGA|Nigeria)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+
+# 大洋洲节点
+大洋洲节点 = NameRegex, FilterKey = "^(?=.*((?i)🇦🇺|澳大利亚|澳洲|澳大利亞|(\b(AU|AUS|Australia)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+澳大利亚节点 = NameRegex, FilterKey = "^(?=.*((?i)🇦🇺|澳大利亚|澳洲|澳大利亞|(\b(AU|AUS|Australia)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+
+# 功能节点
+游戏节点 = NameRegex, FilterKey = "^(?=.*((?i)游戏|🎮|(\b(GAME)(\d+)?\b)))(?!.*((?i)回国|校园)).*$"
+全球节点 = NameRegex, FilterKey = "^(?=.*(.))(?!.*((?i)群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|超时|收藏|福利|好友|失联|回国|校园|(\b(USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|Traffic)(\d+)?\b|(\d{4}-\d{2}-\d{2}|\dG)))).*$"
+
+
+[Proxy Group]
+# 规则
+🆗 Force Direct = select,DIRECT,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Bypass.png
+🛂 Force Proxy = select,DIRECT,🔰 节点选择,🤖 自动选择,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Proxy.png
+
+# Region Fixed
+🇭🇰 HK Sites = select,DIRECT,🛰️🇭🇰香港自动策略,📌🇭🇰香港手动策略,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/hk.png
+🇬🇧 UK Sites = select,DIRECT,🛰️🇬🇧英国自动策略,📌🇬🇧英国手动策略,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/uk.png
+🇺🇸 US Sites = select,DIRECT,🛰️🇺🇸美国自动策略,📌🇺🇸美国手动策略,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/us.png
+
+# Crypto
+💰 Bybit = select,DIRECT,📌🇩🇪德国手动策略,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Cryptocurrency_3.png
+💰 Binance = select,DIRECT,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Cryptocurrency_1.png
+
+# 其他
+📦 PT = select,DIRECT,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Download.png
+⏱️ 检测 = select,DIRECT,📌🌐全球手动策略,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Speedtest.png
+🪂 其他站点 = select,DIRECT,🔰 节点选择,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Star.png
+
+✨ AI = select,📌🇺🇸美国手动策略,🏠美国家宽,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/AI.png
+📘 GitHub = select,DIRECT,🔰 节点选择,🤖 自动选择,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/GitHub.png
+🍎 Apple = select,DIRECT,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png
+Ⓜ️ Microsoft = select,DIRECT,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png
+🎨 Google = select,DIRECT,🛰️🇺🇸美国自动策略,📌🇺🇸美国手动策略,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google_Search.png
+
+# Social
+🎵 TikTok = select,DIRECT,🔰 节点选择,🛰️🇺🇸美国自动策略,📌🇺🇸美国手动策略,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/TikTok.png
+✈️ Telegram = select,DIRECT,🔰 节点选择,🤖 自动选择,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png
+𝕏 Twitter(X) = select,DIRECT,🔰 节点选择,🤖 自动选择,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/X.png
+🗣️ Meta = select,DIRECT,🔰 节点选择,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Facebook.png
+💁 Line = select,DIRECT,🔰 节点选择,🛰️🇯🇵日本自动策略,📌🇯🇵日本手动策略,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Line.png
+
+# Game
+🕹️ Game = select,DIRECT,🔰 节点选择,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png
+🎮 Steam = select,DIRECT,🔰 节点选择,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Steam.png
+
+# 流媒体
+▶️ YouTube = select,DIRECT,🔰 节点选择,🛰️🇺🇸美国自动策略,📌🇺🇸美国手动策略,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube_Letter.png
+🏰 Disney = select,DIRECT,🔰 节点选择,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Disney+_1.png
+🎥 Netflix = select,DIRECT,🔰 节点选择,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netflix_Letter.png
+🎬 HBO MAX = select,DIRECT,🔰 节点选择,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/HBO_Max.png
+🎵 Spotify = select,DIRECT,🔰 节点选择,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Spotify.png
+🌏 国内媒体 = select,DIRECT,🔰 节点选择,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China_Map.png
+🌍 国外媒体 = select,DIRECT,🔰 节点选择,img-url = https://github.com/Koolson/Qure/blob/63be653774a6a83cd8e475a7b65f1ed68b9a0093/IconSet/GlobalMedia.png
+
+# 功能策略
+🔰 节点选择 = select,DIRECT,🤖 自动选择,🎯 手动切换,🛡️ 故障转移,🔮 负载均衡,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Magic.png
+🎯 手动切换 = select,全球节点,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Area.png
+🤖 自动选择 = url-test,全球节点,url = http://www.gstatic.com/generate_204,interval = 60,tolerance = 500,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png
+🛡️ 故障转移 = fallback,全球节点,url = http://www.gstatic.com/generate_204,interval = 300,max-timeout = 3000,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Available.png
+🔮 负载均衡 = load-balance,全球节点,url = http://www.gstatic.com/generate_204,interval = 300,max-timeout = 3000,algorithm = pcc,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Round_Robin.png
+🍃 应用净化 = select,REJECT,DIRECT,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hijacking.png
+🚫 广告拦截 = select,REJECT,DIRECT,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Advertising.png
+🆎 AdBlock = select,REJECT,DIRECT,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/AdBlack.png
+🌐 全球直连 = select,DIRECT,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Direct.png
+🐟 漏网之鱼 = select,DIRECT,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Final.png
+
+# 地区策略
+# https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/HK.png
+# https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png
+# https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png
+## 自动
+🛰️🇭🇰香港自动策略 = url-test,香港节点,interval = 60,tolerance = 50,img-url = https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png
+🛰️🇯🇵日本自动策略 = url-test,日本节点,interval = 60,tolerance = 50,img-url = https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png
+🛰️🇬🇧英国自动策略 = url-test,英国节点,interval = 60,tolerance = 50,img-url = https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_Kingdom.png
+🛰️🇸🇬新加坡自动策略 = url-test,新加坡节点,interval = 60,tolerance = 50,img-url = https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png
+🛰️🇺🇸美国自动策略 = url-test,美国节点,interval = 60,tolerance = 50,img-url = https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png
+🛰️🎮游戏自动策略 = url-test,游戏节点,interval = 60,tolerance = 50,img-url = https://raw.githubusercontent.com/Orz-3/mini/master/Color/GAME.png
+🛰️🌐全球自动策略 = url-test,全球节点,interval = 60,tolerance = 50,img-url = https://raw.githubusercontent.com/Orz-3/mini/master/Color/Global.png
+## 手动
+📌🇭🇰香港手动策略 = select,香港节点,img-url = https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png
+📌🇯🇵日本手动策略 = select,日本节点,img-url = https://raw.githubusercontent.com/Orz-3/mini/master/Color/JP.png
+📌🇬🇧英国手动策略 = select,英国节点,img-url = https://raw.githubusercontent.com/Orz-3/mini/master/Color/UK.png
+📌🇩🇪德国手动策略 = select,德国节点,img-url = https://raw.githubusercontent.com/Orz-3/mini/master/Color/DE.png
+📌🇺🇸美国手动策略 = select,美国节点,img-url = https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png
+📌🎮游戏手动策略 = select,游戏节点,img-url = https://raw.githubusercontent.com/Orz-3/mini/master/Color/GAME.png
+📌🌐全球手动策略 = select,全球节点,img-url = https://raw.githubusercontent.com/Orz-3/mini/master/Color/Global.png
+
+
+[Rule]
+GEOIP,CN,🌐 全球直连
+FINAL,🐟 漏网之鱼
+
+[Remote Rule]
+# 🆗 Force Direct
+https://raw.githubusercontent.com/UncleC0der/agw-config/refs/heads/dev/Rule/Clash/Finance/Bank_HongKong.list, policy=🆗 Force Direct, tag=Bank_HongKong.list, enabled=true
+https://raw.githubusercontent.com/UncleC0der/agw-config/refs/heads/dev/Rule/Clash/Force_Direct.list, policy=🆗 Force Direct, tag=🆗 Force Direct.list, enabled=true
+# 🛂 Force Proxy
+https://raw.githubusercontent.com/UncleC0der/agw-config/refs/heads/dev/Rule/Clash/Force_Proxy.list, policy=🛂 Force Proxy, tag=Special-P.yaml, enabled=true
+
+# 🇭🇰 HK Sites
+https://raw.githubusercontent.com/UncleC0der/clash-rule/refs/heads/dev/Rule/Clash/Carrier/HK_Carrier.list, policy=🇭🇰 HK Sites, tag=HK_Carrier.list, enabled=true
+https://raw.githubusercontent.com/iniwex5/tools/refs/heads/main/rules/HK-wifi-call.list, policy=🇭🇰 HK Sites, tag=HK-wifi-call.list, enabled=true
+# 🇬🇧 UK Sites
+https://raw.githubusercontent.com/UncleC0der/clash-rule/refs/heads/dev/Rule/Clash/Carrier/UK_Carrier.list, policy=🇬🇧 UK Sites, tag=UK-Carrier.yaml, enabled=true
+https://raw.githubusercontent.com/UncleC0der/clash-rule/refs/heads/dev/Rule/Clash/Finance/Wise.yaml, policy=🇬🇧 UK Sites, tag=Wise.yaml, enabled=true
+https://raw.githubusercontent.com/iniwex5/tools/refs/heads/main/rules/UK.list, policy=🇬🇧 UK Sites, tag=UK.list, enabled=true
+https://raw.githubusercontent.com/iniwex5/tools/refs/heads/main/rules/UK-wifi-call.list, policy=🇬🇧 UK Sites, tag=UK-wifi-call.list, enabled=true
+# 🇺🇸 US Sites
+https://raw.githubusercontent.com/UncleC0der/clash-rule/refs/heads/dev/Rule/Clash/Carrier/US_Carrier.list, policy=🇺🇸 US Sites, tag=US-Carrier.yaml, enabled=true
+https://raw.githubusercontent.com/iniwex5/tools/refs/heads/main/rules/US-wifi-call.list, policy=🇺🇸 US Sites, tag=US-wifi-call.list, enabled=true
+
+# 💰 Bybit
+https://raw.githubusercontent.com/UncleC0der/clash-rule/refs/heads/dev/Rule/Clash/Crypto/Bybit.yaml, policy=💰 Bybit, enabled=true
+https://raw.githubusercontent.com/iniwex5/tools/refs/heads/main/rules/bybit.list, policy=💰 Bybit, enabled=true
+# 💰 Binance
+https://raw.githubusercontent.com/iniwex5/tools/refs/heads/main/rules/binance.list, policy=💰 Binance, enabled=true
+
+
+# 🪂 其他站点
+https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Proxy.list, policy=🪂 其他站点, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Global/Global.list, policy=🪂 其他站点, enabled=true
+
+
+# 📦 PT
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PrivateTracker/PrivateTracker.list, policy=📦 PT, enabled=true
+https://raw.githubusercontent.com/iniwex5/tools/refs/heads/main/rules/PT.list, policy=📦 PT, enabled=true
+
+
+# ✨ AI
+https://raw.githubusercontent.com/fmz200/wool_scripts/main/Loon/rule/AI.list, policy=✨ AI, tag=AI.list, enabled=true
+https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/ChatGPT.list, policy=✨ AI, tag=ChatGPT.list, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Copilot/Copilot.list, policy=✨ AI, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Gemini/Gemini.list, policy=✨ AI, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Claude/Claude.list, policy=✨ AI, enabled=true
+https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/AI.list, policy=✨ AI, enabled=true
+https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/AI2.list, policy=✨ AI, enabled=true
+https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/MetaAi.list, policy=✨ AI, enabled=true
+https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/OpenAi.list, policy=✨ AI, enabled=true
+https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/Ruleset/AI.list, policy=✨ AI, enabled=true
+# 📘 GitHub
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/GitHub/GitHub.list, policy=📘 GitHub, enabled=true
+# 🍎 Apple
+https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Apple.list, policy=🍎 Apple, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Apple/Apple.list, policy=🍎 Apple, enabled=true
+# Ⓜ️ Microsoft
+https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Bing.list, policy=Ⓜ️ Microsoft, enabled=true
+https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/OneDrive.list, policy=Ⓜ️ Microsoft, enabled=true
+https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Microsoft.list, policy=Ⓜ️ Microsoft, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.list, policy=Ⓜ️ Microsoft, enabled=true
+# 🎨 Google
+https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/GoogleCN.list, policy=🎨 Google, enabled=true
+https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Google.list, policy=🎨 Google, enabled=true
+https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/GoogleCN.list, policy=🎨 Google, enabled=true
+https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/GoogleCNProxyIP.list, policy=🎨 Google, enabled=true
+https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/GoogleEarth.list, policy=🎨 Google, enabled=true
+https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/GoogleFCM.list, policy=🎨 Google, enabled=true
+
+
+# 🎵 TikTok
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/TikTok/TikTok.list, policy=🎵 TikTok, enabled=true
+# ✈️ Telegram
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Telegram/Telegram.list, policy=✈️ Telegram, enabled=true
+# 𝕏 Twitter(X)
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Twitter/Twitter.list, policy=𝕏 Twitter(X), enabled=true
+# 🗣️ Meta
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Facebook/Facebook.list, policy=🗣️ Meta, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Whatsapp/Whatsapp.yaml, policy=🗣️ Meta, enabled=true
+# 💁 Line
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Line/Line.yaml, policy=💁 Line, enabled=true
+
+# ▶️ YouTube
+https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/YouTube.list, policy=▶️ YouTube, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.list, policy=▶️ YouTube, enabled=true
+# 🏰 Disney
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Disney/Disney.list, policy=🏰 Disney, enabled=true
+# 🎥 Netflix
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Netflix/Netflix.list, policy=🎥 Netflix, enabled=true
+# 🎬 HBO MAX
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/HBO/HBO.list, policy=🎬 HBO MAX, enabled=true
+# 🎵 Spotify
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Spotify/Spotify.list, policy=🎵 Spotify, enabled=true
+# 🌏 国内媒体
+https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaMedia.list, policy=🌏 国内媒体, enabled=true
+# 🌍 国外媒体
+https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyMedia.list, policy=🌍 国外媒体, enabled=true
+
+# 🕹️ Game
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Epic/Epic.list, policy=🕹️ Game, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/EA/EA.list, policy=🕹️ Game, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Blizzard/Blizzard.list, policy=🕹️ Game, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/UBI/UBI.list, policy=🕹️ Game, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Sony/Sony.list, policy=🕹️ Game, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Nintendo/Nintendo.list, policy=🕹️ Game, enabled=true
+https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Epic.list, policy=🕹️ Game, enabled=true
+https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Origin.list, policy=🕹️ Game, enabled=true
+https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Sony.list, policy=🕹️ Game, enabled=true
+https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Steam.list, policy=🕹️ Game, enabled=true
+https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Nintendo.list, policy=🕹️ Game, enabled=true
+# 🎮 Steam
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Steam/Steam.list, policy=🎮 Steam, enabled=true
+
+
+# 🍃 应用净化
+https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanProgramAD.list, policy=🍃 应用净化, tag=BanProgramAD.list, enabled=true
+# 🚫 广告拦截
+https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list, policy=🚫 广告拦截, enabled=true
+# 🆎 AdBlock
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Loon/Advertising/Advertising_Domain.list, policy=🆎 AdBlock, tag=Advertising_Domain.list, enabled=true
+https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanEasyList.list, policy=🆎 AdBlock, tag=BanEasyList.list, enabled=true
+https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanEasyListChina.list, policy=🆎 AdBlock, tag=BanEasyListChina.list, enabled=true
+https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanEasyPrivacy.list, policy=🆎 AdBlock, tag=BanEasyPrivacy.list, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Loon/Advertising/Advertising.list, policy=🆎 AdBlock, tag=Advertising.list, enabled=true
+
+# ⏱️ 检测
+https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Check.list, policy=⏱️ 检测, enabled=true
+
+
+# 🌐 全球直连
+https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list, policy=🌐 全球直连, enabled=true
+https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/UnBan.list, policy=🌐 全球直连, enabled=true
+https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/SteamCN.list, policy=🌐 全球直连, enabled=true
+
+
+[Rewrite]
+
+[Host]
+
+[Script]
+
+[Remote Script]
+
+[Plugin]
+# 资源解析器
+https://raw.githubusercontent.com/chavyleung/scripts/master/box/rewrite/boxjs.rewrite.loon.plugin, policy=🔰 节点选择, enabled=true
+
+# 
+https://kelee.one/Tool/Loon/Lpx/Block_HTTPDNS.lpx, pin=true, enabled=true
+https://kelee.one/Tool/Loon/Lpx/BlockAdvertisers.lpx, pin=true, enabled=true
+https://kelee.one/Tool/Loon/Lpx/QuickSearch.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/Prevent_DNS_Leaks.lpx, policy=兜底后备策略, enabled=true
+https://kelee.one/Tool/Loon/Lpx/Node_detection_tool.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/TestFlightRegionUnlock.lpx, policy=DIRECT, enabled=false
+https://kelee.one/Tool/Loon/Lpx/BoxJs.lpx, policy=兜底后备策略, enabled=true
+https://kelee.one/Tool/Loon/Lpx/Sub-Store.lpx, policy=兜底后备策略, enabled=true
+https://kelee.one/Tool/Loon/Lpx/Script-Hub.lpx, policy=兜底后备策略, enabled=true
+
+# 机场
+https://oics.net/download/oixcloud_loon.sgmodule, enabled=true
+
+# 去广告
+https://raw.githubusercontent.com/UncleC0der/agw-config/refs/heads/dev/Loon/Plugin/Gate_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/Switch_github_mirror.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/NarwelRobots_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/YoudaoTrans_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/Snowball_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/CosmosPodcast_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/Himalaya_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/FleaMarket_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/WPForum_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/Weibo_intl_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/NeteaseCloudMusic_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/MailMaster_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/YoudaoDict_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/TXDocs_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/Tencent_Video_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/smzdm_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/SodaMusic_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/AutoHome_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/PinDuoDuo_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/MaiMai_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/MaFengWo_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/CoolApk_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/QuarkBrowser_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/MrHema_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/Umetrip_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/TaobaoTravel_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/DouBan_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/BaiduNetDisk_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/Tieba_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/AliYunDrive_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/iQiYi_Video_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/QQ_Redirect.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/QQMusic_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/Pinterest_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/Line_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/Keep_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/Jump_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/AppleWeatherEnhancer.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/12306_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/36Kr_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/Zhihu_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/RedPaper_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/WexinMiniPrograms_Remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/Weixin_Official_Accounts_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/Weixin_external_links_unlock.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/Taobao_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/Remove_ads_by_keli.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/JD_Price.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/JD_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/Amap_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/FlyerTea_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/Cainiao_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/Bilibili_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/YouTubeSubtitlesTranslation.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/YouTube_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/Reddit_remove_ads.lpx, enabled=true
+
+
+
+[Mitm]
+skip-server-cert-verify = false

@@ -74,7 +74,7 @@ wifi-access-socks5-port = 7221
 [Proxy Group]
 # 规则
 🆗 Force Direct = select,DIRECT,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Bypass.png
-🛂 Force Proxy = select,DIRECT,🔰 节点选择,🤖 自动选择,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Proxy.png
+🛂 Force Proxy = select,DIRECT,🔰 策略节点,🤖 自动选择,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Proxy.png
 
 # Region Fixed
 🇭🇰 HK Sites = select,DIRECT,🛰️🇭🇰香港自动策略,📌🇭🇰香港手动策略,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/hk.png
@@ -89,37 +89,37 @@ wifi-access-socks5-port = 7221
 📦 PT = select,DIRECT,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Download.png
 
 ✨ AI = select,📌🇺🇸美国手动策略,🏠美国家宽,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/AI.png
-📘 GitHub = select,DIRECT,🔰 节点选择,🤖 自动选择,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/GitHub.png
+📘 GitHub = select,DIRECT,🔰 策略节点,🤖 自动选择,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/GitHub.png
 🍎 Apple = select,DIRECT,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png
 Ⓜ️ Microsoft = select,DIRECT,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png
 🎨 Google = select,DIRECT,🛰️🇺🇸美国自动策略,📌🇺🇸美国手动策略,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google_Search.png
 
 # Social
-✈️ Telegram = select,DIRECT,🔰 节点选择,🤖 自动选择,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png
-💁 Line = select,DIRECT,🔰 节点选择,🛰️🇯🇵日本自动策略,📌🇯🇵日本手动策略,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Line.png
-𝕏 Twitter(X) = select,DIRECT,🔰 节点选择,🤖 自动选择,🛰️🇺🇸美国自动策略,📌🇺🇸美国手动策略,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/X.png
-🗣️ Meta = select,DIRECT,🔰 节点选择,🤖 自动选择,🛰️🇺🇸美国自动策略,📌🇺🇸美国手动策略,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Facebook.png
-👥 Social Media = select,DIRECT,🔰 节点选择,🤖 自动选择,🛰️🇺🇸美国自动策略,📌🇺🇸美国手动策略,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Media.png
+✈️ Telegram = select,DIRECT,🔰 策略节点,🤖 自动选择,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png
+💁 Line = select,DIRECT,🔰 策略节点,🛰️🇯🇵日本自动策略,📌🇯🇵日本手动策略,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Line.png
+𝕏 Twitter(X) = select,DIRECT,🔰 策略节点,🤖 自动选择,🛰️🇺🇸美国自动策略,📌🇺🇸美国手动策略,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/X.png
+🗣️ Meta = select,DIRECT,🔰 策略节点,🤖 自动选择,🛰️🇺🇸美国自动策略,📌🇺🇸美国手动策略,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Facebook.png
+👥 Social Media = select,DIRECT,🔰 策略节点,🤖 自动选择,🛰️🇺🇸美国自动策略,📌🇺🇸美国手动策略,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Media.png
 
 # 流媒体
-🎵 TikTok = select,DIRECT,🔰 节点选择,🛰️🇺🇸美国自动策略,📌🇺🇸美国手动策略,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/TikTok.png
-▶️ YouTube = select,DIRECT,🔰 节点选择,🛰️🇺🇸美国自动策略,📌🇺🇸美国手动策略,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube_Letter.png
-🏰 Disney = select,DIRECT,🔰 节点选择,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Disney+_1.png
-🎥 Netflix = select,DIRECT,🔰 节点选择,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netflix_Letter.png
-🎬 HBO MAX = select,DIRECT,🔰 节点选择,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/HBO_Max.png
-🎵 Spotify = select,DIRECT,🔰 节点选择,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Spotify.png
-🌏 国内媒体 = select,DIRECT,🔰 节点选择,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China_Map.png
-🌍 国外媒体 = select,DIRECT,🔰 节点选择,img-url = https://github.com/Koolson/Qure/blob/63be653774a6a83cd8e475a7b65f1ed68b9a0093/IconSet/GlobalMedia.png
+🎵 TikTok = select,DIRECT,🔰 策略节点,🛰️🇺🇸美国自动策略,📌🇺🇸美国手动策略,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/TikTok.png
+▶️ YouTube = select,DIRECT,🔰 策略节点,🛰️🇺🇸美国自动策略,📌🇺🇸美国手动策略,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube_Letter.png
+🏰 Disney = select,DIRECT,🔰 策略节点,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Disney+_1.png
+🎥 Netflix = select,DIRECT,🔰 策略节点,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netflix_Letter.png
+🎬 HBO MAX = select,DIRECT,🔰 策略节点,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/HBO_Max.png
+🎵 Spotify = select,DIRECT,🔰 策略节点,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Spotify.png
+🌏 国内媒体 = select,DIRECT,🔰 策略节点,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China_Map.png
+🌍 国外媒体 = select,DIRECT,🔰 策略节点,img-url = https://github.com/Koolson/Qure/blob/63be653774a6a83cd8e475a7b65f1ed68b9a0093/IconSet/GlobalMedia.png
 
 # Game
-🕹️ Game = select,DIRECT,🔰 节点选择,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png
-🎮 Steam = select,DIRECT,🔰 节点选择,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Steam.png
+🕹️ Game = select,DIRECT,🔰 策略节点,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png
+🎮 Steam = select,DIRECT,🔰 策略节点,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Steam.png
 
 # 其他
-🪂 其他站点 = select,DIRECT,🔰 节点选择,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Star.png
+🪂 其他站点 = select,DIRECT,🔰 策略节点,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Star.png
 
 # 功能策略
-🔰 节点选择 = select,DIRECT,🤖 自动选择,🎯 手动切换,🛡️ 故障转移,🔮 负载均衡,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Magic.png
+🔰 策略节点 = select,DIRECT,🤖 自动选择,🎯 手动切换,🛡️ 故障转移,🔮 负载均衡,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Magic.png
 🎯 手动切换 = select,全球节点,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Area.png
 🤖 自动选择 = url-test,全球节点,url = http://www.gstatic.com/generate_204,interval = 60,tolerance = 500,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png
 🛡️ 故障转移 = fallback,全球节点,url = http://www.gstatic.com/generate_204,interval = 300,max-timeout = 3000,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Available.png
@@ -303,7 +303,7 @@ https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/SteamCN.l
 
 [Plugin]
 # 资源解析器
-https://raw.githubusercontent.com/chavyleung/scripts/master/box/rewrite/boxjs.rewrite.loon.plugin, policy=🔰 节点选择, enabled=true
+https://raw.githubusercontent.com/chavyleung/scripts/master/box/rewrite/boxjs.rewrite.loon.plugin, policy=🔰 策略节点, enabled=true
 
 # 
 https://kelee.one/Tool/Loon/Lpx/Block_HTTPDNS.lpx, pin=true, enabled=true

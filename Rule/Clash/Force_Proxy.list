@@ -25,18 +25,20 @@ DOMAIN-SUFFIX, shuzijumin.com
 DOMAIN-SUFFIX, nodeseek.com
 DOMAIN-SUFFIX, uscardforum.com
 DOMAIN-SUFFIX, banknav.com
+DOMAIN-SUFFIX, docofcard.com
 
 # AI
 #DOMAIN-KEYWORD,openai
 #DOMAIN-KEYWORD,anthropic
 #DOMAIN-KEYWORD,claude
 DOMAIN-KEYWORD,traeide
-DOMAIN-SUFFIX,trae.ai
+DOMAIN-SUFFIX, trae.ai
 
 # docker
-DOMAIN-SUFFIX,docker.io
+DOMAIN-SUFFIX, docker.io
 DOMAIN-SUFFIX, docker.com
 DOMAIN, registry.hub.docker.com
+DOMAIN-SUFFIX, ghcr.io
 
 # PT
 ## dmhy

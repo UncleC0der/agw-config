@@ -1,4 +1,7 @@
-# clash rule
+# Config
+collect resources related to proxy tools
+
+## clash rule
 
 配置参考
 - https://github.com/ACL4SSR/ACL4SSR/blob/master/Clash/config/ACL4SSR.ini

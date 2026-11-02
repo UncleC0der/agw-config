@@ -1,0 +1,1241 @@
+# 配置名称: Egern配置
+# 配置作者: UncleC0der
+# 更新时间: 26-09-05 00:00
+
+# [通用设置]
+# 自动更新配置的内容。默认值是空
+# auto_update:
+#   url: http://example.com/
+#   interval: 86400
+
+ipv6: false
+http_port: 3080
+socks_port: 3090
+allow_external_connections: false
+
+# 仅虚拟网接口模式。默认值是 false
+vif_only: false
+
+# 全局阻止 QUIC 协议，强制使用 TCP 连接。默认值是 false
+# 优先级：代理 > 策略组 > 全局。代理自身的 block_quic 优先级最高，
+# 其次是策略组的 block_quic，最后是此全局设置。
+# 若三者均未设置，则使用协议默认值（TCP 类协议默认阻止，UDP 类协议默认放行）。
+block_quic: false
+
+# 策略组选中节点变化时（手动切换、自动测速切换、故障转移、订阅更新后选中项回退），
+# 关闭仍在使用旧节点的连接，使流量立即通过新节点重连。默认值是 false
+close_connections_on_policy_change: false
+
+# 绕过隧道代理的域名列表。默认值是空数组
+bypass_tunnel_proxy:
+  - "*.local"
+  - "192.168.0.0/16"
+
+# 使用真实 IP 的域名列表（不使用 Fake IP）。默认值是空数组
+real_ip_domains:
+  - "*.lan"
+  - "*.push.apple.com"
+
+# 隐藏 VPN 图标。默认值是 false
+hide_vpn_icon: false
+
+# 劫持 DNS 的地址列表。默认值是空数组
+hijack_dns:
+  - '*'
+
+
+geoip_db_url: https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb
+asn_db_url: https://raw.githubusercontent.com/Loyalsoldier/geoip/release/GeoLite2-ASN.mmdb
+proxy_latency_test_url: https://connectivitycheck.gstatic.com/generate_204
+direct_latency_test_url: https://www.qq.com
+
+# 兼容路由模式。默认值是 false
+compat_route: false
+
+# 包含所有网络流量。默认值是 false。APNs 流量、蜂窝网络服务流量、本地网络流量等都需要 include_all_networks 启用才能包含
+include_all_networks: false
+include_apns: false
+include_cellular_services: false
+include_local_networks: false
+
+# 虚拟接口包含的路由。默认值是空数组
+vif_included_routes:
+  - 192.168.0.1/32
+
+# 虚拟接口排除的路由。默认值是空数组
+vif_excluded_routes:
+  - 192.168.0.1/32
+
+# [DNS设置]
+dns:
+  bootstrap:
+    - system  # 使用系统默认的 DNS 配置作为引导
+    - 223.5.5.5
+    - 119.29.29.29
+  upstreams:
+    国内加密DNS:
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+    国外加密DNS:
+      - https://1.1.1.1/dns-query
+      - https://dns.google/dns-query
+  forward:
+    - domain_suffix:
+        match: cn
+        value: 国内加密DNS
+    - proxy_rule_set:
+        match: https://raw.githubusercontent.com/Repcz/Tool/X/Egern/Rules/ChinaDomain.yaml
+        value: 国内加密DNS
+    - domain_wildcard:
+        match: '*'
+        value: 国外加密DNS
+  # hosts:
+  #   example.com: www.example.com
+  #   localhost: 127.0.0.1
+  #   "*.local": 192.168.1.1
+  # block_ips:
+  #   - 1.2.3.4
+  #   - 4.3.2.1/32
+  public_ip_lookup_url: https://ifconfig.me/ip
+
+# 代理列表
+proxies:
+- vless:
+    name: 🏠XIANGCAI
+    server: apnow.clickcloud.cc
+    port: 443
+    user_id: 4395bda7-a2f2-4864-94e8-d5f0b24f70b5
+    tfo: false
+    udp_relay: true
+    flow: xtls-rprx-vision
+    transport:
+      tls:
+        sni: course.clickcloud.cc
+        reality:
+          public_key: 8Fddr08Kr5sC_zj4dOC6mbysbAvMQABT35hnxnsUZUY
+          short_id: 8e99f8
+        skip_tls_verify: false
+
+# A 分流策略组 -> B 节点调度组 -> C 节点分类组 -> 全球节点组 (唯一节点来源)
+policy_groups:
+
+  # =====================================================
+  # A. 分流策略组 (Rule-facing) — 29 个
+  # =====================================================
+
+  # Force
+  - select:
+      name: 🆗 Force Direct
+      policies:
+        - DIRECT
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Bypass.png
+  - select:
+      name: 🛂 Force Proxy
+      policies:
+        - DIRECT
+        - 🔰 策略节点
+        - 🤖 自动选择
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Proxy.png
+
+  # Region Fixed
+  - select:
+      name: 🇭🇰 HK Sites
+      policies:
+        - DIRECT
+        - 🇭🇰香港🛰️自动策略
+        - 🇭🇰香港📌手动策略
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/hk.png
+  - select:
+      name: 🇬🇧 UK Sites
+      policies:
+        - DIRECT
+        - 🇬🇧英国🛰️自动策略
+        - 🇬🇧英国📌手动策略
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/uk.png
+  - select:
+      name: 🇺🇸 US Sites
+      policies:
+        - DIRECT
+        - 🇺🇸美国🛰️自动策略
+        - 🇺🇸美国📌手动策略
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/us.png
+
+  # Common
+  - select:
+      name: ✨ AI
+      policies:
+        - 🇺🇸美国📌手动策略
+        - 🏠XIANGCAI
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/AI.png
+  - select:
+      name: 📘 GitHub
+      policies:
+        - DIRECT
+        - 🔰 策略节点
+        - 🤖 自动选择
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/GitHub.png
+  - select:
+      name: 🍎 Apple
+      policies:
+        - DIRECT
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png
+  - select:
+      name: Ⓜ️ Microsoft
+      policies:
+        - DIRECT
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png
+  - select:
+      name: 🎨 Google
+      policies:
+        - DIRECT
+        - 🇺🇸美国🛰️自动策略
+        - 🇺🇸美国📌手动策略
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google_Search.png
+
+  # Social
+  - select:
+      name: ✈️ Telegram
+      policies:
+        - DIRECT
+        - 🔰 策略节点
+        - 🤖 自动选择
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png
+  - select:
+      name: 💁 Line
+      policies:
+        - DIRECT
+        - 🔰 策略节点
+        - 🇯🇵日本🛰️自动策略
+        - 🇯🇵日本📌手动策略
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Line.png
+  - select:
+      name: 𝕏 Twitter(X)
+      policies:
+        - DIRECT
+        - 🔰 策略节点
+        - 🤖 自动选择
+        - 🇺🇸美国🛰️自动策略
+        - 🇺🇸美国📌手动策略
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/X.png
+  - select:
+      name: 🗣️ Meta
+      policies:
+        - DIRECT
+        - 🔰 策略节点
+        - 🤖 自动选择
+        - 🇺🇸美国🛰️自动策略
+        - 🇺🇸美国📌手动策略
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Facebook.png
+  - select:
+      name: 👥 Social Media
+      policies:
+        - DIRECT
+        - 🔰 策略节点
+        - 🤖 自动选择
+        - 🇺🇸美国🛰️自动策略
+        - 🇺🇸美国📌手动策略
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Media.png
+
+  # 流媒体
+  - select:
+      name: 🎵 TikTok
+      policies:
+        - DIRECT
+        - 🔰 策略节点
+        - 🇺🇸美国🛰️自动策略
+        - 🇺🇸美国📌手动策略
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/TikTok.png
+  - select:
+      name: ▶️ YouTube
+      policies:
+        - DIRECT
+        - 🔰 策略节点
+        - 🇺🇸美国🛰️自动策略
+        - 🇺🇸美国📌手动策略
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube_Letter.png
+  - select:
+      name: 🏰 Disney
+      policies:
+        - DIRECT
+        - 🔰 策略节点
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Disney+_1.png
+  - select:
+      name: 🎥 Netflix
+      policies:
+        - DIRECT
+        - 🔰 策略节点
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netflix_Letter.png
+  - select:
+      name: 🎬 HBO MAX
+      policies:
+        - DIRECT
+        - 🔰 策略节点
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/HBO_Max.png
+  - select:
+      name: 🎵 Spotify
+      policies:
+        - DIRECT
+        - 🔰 策略节点
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Spotify.png
+  - select:
+      name: 🌏 国内媒体
+      policies:
+        - DIRECT
+        - 🔰 策略节点
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China_Map.png
+  - select:
+      name: 🌍 国外媒体
+      policies:
+        - DIRECT
+        - 🔰 策略节点
+      icon: https://raw.githubusercontent.com/Koolson/Qure/63be653774a6a83cd8e475a7b65f1ed68b9a0093/IconSet/GlobalMedia.png
+
+  # Game
+  - select:
+      name: 🕹️ Game
+      policies:
+        - DIRECT
+        - 🔰 策略节点
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png
+  - select:
+      name: 🎮 Steam
+      policies:
+        - DIRECT
+        - 🔰 策略节点
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Steam.png
+
+  # Crypto
+  - select:
+      name: 💰 Bybit
+      policies:
+        - DIRECT
+        - 🇩🇪德国📌手动策略
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Cryptocurrency_3.png
+  - select:
+      name: 💰 Binance
+      policies:
+        - DIRECT
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Cryptocurrency_1.png
+
+  # 其他
+  - select:
+      name: 📦 PT
+      policies:
+        - DIRECT
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Download.png
+  - select:
+      name: 🪂 其他站点
+      policies:
+        - DIRECT
+        - 🔰 策略节点
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Star.png
+
+  # =====================================================
+  # B. 节点调度组 (Selection / Automatic) — 24 个
+  # =====================================================
+  - select:
+      name: 🔰 策略节点
+      policies:
+        - DIRECT
+        - 🤖 自动选择
+        - 🎯 手动切换
+        - 🛡️ 故障转移
+        - 🔮 负载均衡
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Magic.png
+  - select:
+      name: 🎯 手动切换
+      policies:
+        - 全球节点
+      flatten: true
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Area.png
+  - auto_test:
+      name: 🤖 自动选择
+      policies:
+        - 全球节点
+      flatten: true
+      interval: 60
+      tolerance: 500
+      latency_test_url: http://www.gstatic.com/generate_204
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png
+  - fallback:
+      name: 🛡️ 故障转移
+      policies:
+        - 全球节点
+      flatten: true
+      interval: 300
+      timeout: 3
+      latency_test_url: http://www.gstatic.com/generate_204
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Available.png
+  - load_balance:
+      name: 🔮 负载均衡
+      policies:
+        - 全球节点
+      flatten: true
+      algorithm: hash
+      latency_test_url: http://www.gstatic.com/generate_204
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Round_Robin.png
+  - select:
+      name: 🍃 应用净化
+      policies:
+        - REJECT
+        - DIRECT
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hijacking.png
+  - select:
+      name: 🚫 广告拦截
+      policies:
+        - REJECT
+        - DIRECT
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Advertising.png
+  - select:
+      name: 🆎 AdBlock
+      policies:
+        - REJECT
+        - DIRECT
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/AdBlack.png
+  - select:
+      name: ⏱️ 检测
+      policies:
+        - DIRECT
+        - 🌐全球📌手动策略
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Speedtest.png
+  - select:
+      name: 🌐 全球直连
+      policies:
+        - DIRECT
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Direct.png
+  - select:
+      name: 🐟 漏网之鱼
+      policies:
+        - DIRECT
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Final.png
+
+  # 地区策略
+  - auto_test:
+      name: 🇭🇰香港🛰️自动策略
+      policies:
+        - 香港节点
+      flatten: true
+      interval: 60
+      tolerance: 50
+      icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png
+  - auto_test:
+      name: 🇯🇵日本🛰️自动策略
+      policies:
+        - 日本节点
+      flatten: true
+      interval: 60
+      tolerance: 50
+      icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png
+  - auto_test:
+      name: 🇬🇧英国🛰️自动策略
+      policies:
+        - 英国节点
+      flatten: true
+      interval: 60
+      tolerance: 50
+      icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_Kingdom.png
+  - auto_test:
+      name: 🇺🇸美国🛰️自动策略
+      policies:
+        - 美国节点
+      flatten: true
+      interval: 60
+      tolerance: 50
+      icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png
+  - auto_test:
+      name: 🎮游戏🛰️自动策略
+      policies:
+        - 游戏节点
+      flatten: true
+      interval: 60
+      tolerance: 50
+      icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/GAME.png
+  - auto_test:
+      name: 🌐全球🛰️自动策略
+      policies:
+        - 全球节点
+      flatten: true
+      interval: 60
+      tolerance: 50
+      icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Global.png
+  - select:
+      name: 🇭🇰香港📌手动策略
+      policies:
+        - 香港节点
+      flatten: true
+      icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png
+  - select:
+      name: 🇯🇵日本📌手动策略
+      policies:
+        - 日本节点
+      flatten: true
+      icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/JP.png
+  - select:
+      name: 🇬🇧英国📌手动策略
+      policies:
+        - 英国节点
+      flatten: true
+      icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/UK.png
+  - select:
+      name: 🇩🇪德国📌手动策略
+      policies:
+        - 德国节点
+      flatten: true
+      icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/DE.png
+  - select:
+      name: 🇺🇸美国📌手动策略
+      policies:
+        - 美国节点
+      flatten: true
+      icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png
+  - select:
+      name: 🎮游戏📌手动策略
+      policies:
+        - 游戏节点
+      flatten: true
+      icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/GAME.png
+  - select:
+      name: 🌐全球📌手动策略
+      policies:
+        - 全球节点
+      flatten: true
+      icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Global.png
+
+  # =====================================================
+  # C. 节点分类组 (Regex filters) — 30 个
+  # =====================================================
+  # 亚洲节点
+  - select:
+      name: 香港节点
+      policies:
+        - 订阅节点
+      flatten: true
+      filter: '^(?=.*((?i)🇭🇰|香港|港|HKT|(\b(HK|HKG|Hong|HongKong|Hong Kong)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+
+  - select:
+      name: 澳门节点
+      policies:
+        - 订阅节点
+      flatten: true
+      filter: '^(?=.*((?i)🇲🇴|澳门|澳門|(\b(MO|MAC|Macao|Macau)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+
+  - select:
+      name: 台湾节点
+      policies:
+        - 订阅节点
+      flatten: true
+      filter: '^(?=.*((?i)台湾|台灣|HINET|(\b(TW|TWN|Taiwan|Tai)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+
+  - select:
+      name: 日本节点
+      policies:
+        - 订阅节点
+      flatten: true
+      filter: '^(?=.*((?i)🇯🇵|日本|东京|大阪|川日|泉日|埼玉|(\b(JP|JPN|Japan)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+
+  - select:
+      name: 韩国节点
+      policies:
+        - 订阅节点
+      flatten: true
+      filter: '^(?=.*((?i)🇰🇷|韩国|韓国|韩|韓|首尔|(\b(KR|KOR|Korea)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+
+  - select:
+      name: 印度节点
+      policies:
+        - 订阅节点
+      flatten: true
+      filter: '^(?=.*((?i)🇮🇳|印度|(\b(IN|IND|India)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+
+  - select:
+      name: 土耳其节点
+      policies:
+        - 订阅节点
+      flatten: true
+      filter: '^(?=.*((?i)🇹🇷|土耳其|(\b(TR|TUR|Turkey|Türkiye)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+
+  - select:
+      name: 泰国节点
+      policies:
+        - 订阅节点
+      flatten: true
+      filter: '^(?=.*((?i)🇹🇭|泰国|泰國|(\b(TH|THA|Thailand)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+
+  - select:
+      name: 新加坡节点
+      policies:
+        - 订阅节点
+      flatten: true
+      filter: '^(?=.*((?i)🇸🇬|新加坡|狮城|狮|坡|(\b(SG|SGP|Singapore)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+
+  - select:
+      name: 菲律宾节点
+      policies:
+        - 订阅节点
+      flatten: true
+      filter: '^(?=.*((?i)🇵🇭|菲律宾|菲律賓|(\b(PH|PHL|Philippines)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+
+  - select:
+      name: 马来西亚节点
+      policies:
+        - 订阅节点
+      flatten: true
+      filter: '^(?=.*((?i)🇲🇾|马来西亚|馬來西亞|大马|馬來|(\b(MY|MYS|Malaysia)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+
+  - select:
+      name: 东南亚节点
+      policies:
+        - 订阅节点
+      flatten: true
+      filter: '^(?=.*((?i)🇸🇬|🇹🇭|🇵🇭|🇲🇾|新加坡|泰国|泰國|菲律宾|菲律賓|马来西亚|馬來西亞|(\b(SG|SGP|Singapore|TH|THA|Thailand|PH|PHL|Philippines|MY|MYS|Malaysia)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+
+  # 北美洲节点
+  - select:
+      name: 北美节点
+      policies:
+        - 订阅节点
+      flatten: true
+      filter: '^(?=.*((?i)🇺🇸|🇨🇦|🇲🇽|美国|加拿大|墨西哥|(\b(US|USA|United States|CA|CAN|Canada|MX|MEX|Mexico)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+
+  - select:
+      name: 美国节点
+      policies:
+        - 订阅节点
+      flatten: true
+      filter: '^(?=.*((?i)🇺🇸|美国|美國|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|Misaka|(\b(US|USA|United States|America)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+
+  - select:
+      name: 加拿大节点
+      policies:
+        - 订阅节点
+      flatten: true
+      filter: '^(?=.*((?i)🇨🇦|加拿大|(\b(CA|CAN|Canada)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+
+  - select:
+      name: 墨西哥节点
+      policies:
+        - 订阅节点
+      flatten: true
+      filter: '^(?=.*((?i)🇲🇽|墨西哥|(\b(MX|MEX|Mexico)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+
+  # 南美洲节点
+  - select:
+      name: 南美节点
+      policies:
+        - 订阅节点
+      flatten: true
+      filter: '^(?=.*((?i)🇧🇷|🇦🇷|巴西|阿根廷|(\b(BR|BRA|Brazil|AR|ARG|Argentina)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+
+  - select:
+      name: 巴西节点
+      policies:
+        - 订阅节点
+      flatten: true
+      filter: '^(?=.*((?i)🇧🇷|巴西|(\b(BR|BRA|Brazil)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+
+  - select:
+      name: 阿根廷节点
+      policies:
+        - 订阅节点
+      flatten: true
+      filter: '^(?=.*((?i)🇦🇷|阿根廷|(\b(AR|ARG|Argentina)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+
+  # 欧洲节点
+  - select:
+      name: 欧洲节点
+      policies:
+        - 订阅节点
+      flatten: true
+      filter: '^(?=.*((?i)🇷🇺|🇩🇪|🇫🇷|🇬🇧|俄罗斯|俄羅斯|德国|德國|法国|法國|英国|英國|伦敦|法兰克福|(\b(RU|RUS|Russia|DE|DEU|Germany|FR|FRA|France|UK|GB|GBR|United Kingdom|England|London)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+
+  - select:
+      name: 俄罗斯节点
+      policies:
+        - 订阅节点
+      flatten: true
+      filter: '^(?=.*((?i)🇷🇺|俄罗斯|俄羅斯|俄国|俄國|莫斯科|(\b(RU|RUS|Russia|Moscow)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+
+  - select:
+      name: 德国节点
+      policies:
+        - 订阅节点
+      flatten: true
+      filter: '^(?=.*((?i)🇩🇪|德国|德國|法兰克福|法蘭克福|(\b(DE|DEU|Germany|Frankfurt)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+
+  - select:
+      name: 法国节点
+      policies:
+        - 订阅节点
+      flatten: true
+      filter: '^(?=.*((?i)🇫🇷|法国|法國|巴黎|(\b(FR|FRA|France|Paris)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+
+  - select:
+      name: 英国节点
+      policies:
+        - 订阅节点
+      flatten: true
+      filter: '^(?=.*((?i)🇬🇧|英国|英國|伦敦|倫敦|(\b(UK|GB|GBR|United Kingdom|England|London)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+
+  # 非洲节点
+  - select:
+      name: 非洲节点
+      policies:
+        - 订阅节点
+      flatten: true
+      filter: '^(?=.*((?i)🇳🇬|尼日利亚|尼日利亞|(\b(NG|NGA|Nigeria)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+
+  - select:
+      name: 尼日利亚节点
+      policies:
+        - 订阅节点
+      flatten: true
+      filter: '^(?=.*((?i)🇳🇬|尼日利亚|尼日利亞|(\b(NG|NGA|Nigeria)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+
+  # 大洋洲节点
+  - select:
+      name: 大洋洲节点
+      policies:
+        - 订阅节点
+      flatten: true
+      filter: '^(?=.*((?i)🇦🇺|澳大利亚|澳洲|澳大利亞|(\b(AU|AUS|Australia)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+
+  - select:
+      name: 澳大利亚节点
+      policies:
+        - 订阅节点
+      flatten: true
+      filter: '^(?=.*((?i)🇦🇺|澳大利亚|澳洲|澳大利亞|(\b(AU|AUS|Australia)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+
+  # 功能节点
+  - select:
+      name: 游戏节点
+      policies:
+        - 订阅节点
+      flatten: true
+      filter: '^(?=.*((?i)游戏|🎮|(\b(GAME)(\d+)?\b)))(?!.*((?i)回国|校园)).*$'
+
+  - select:
+      name: 全球节点
+      policies:
+        - 订阅节点
+      flatten: true
+      filter: '^(?=.*(.))(?!.*((?i)群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|超时|收藏|福利|好友|失联|回国|校园|(\b(USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|Traffic)(\d+)?\b|(\d{4}-\d{2}-\d{2}|\dG)))).*$'
+  
+  
+  # 节点来源：仅此一处配置订阅，其余 30 个分类均从它筛选
+  # 可以将 urls 改为已有订阅链接，也可以添加多条订阅 URL。
+  - select:
+      name: 订阅节点
+      flatten: true
+      urls:
+        - https://sub-store.intra.i77.io:9443/KehQCsgs3KsGYMrvCc7dpkZjc7bA/download/collection/mix-override?target=Egern
+      update_interval: 3600
+
+# 代理规则列表
+
+rules:
+  # 🆗 Force Direct
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/UncleC0der/agw-config/refs/heads/dev/Rule/Clash/Finance/Bank_HongKong.list'
+      policy: '🆗 Force Direct'
+      name: 'Bank_HongKong.list'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/UncleC0der/agw-config/refs/heads/dev/Rule/Clash/Force_Direct.list'
+      policy: '🆗 Force Direct'
+      name: '🆗 Force Direct.list'
+      disabled: false
+  # 🛂 Force Proxy
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/UncleC0der/agw-config/refs/heads/dev/Rule/Clash/Force_Proxy.list'
+      policy: '🛂 Force Proxy'
+      name: 'Special-P.yaml'
+      disabled: false
+
+  # 🇭🇰 HK Sites
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/UncleC0der/clash-rule/refs/heads/dev/Rule/Clash/Carrier/HK_Carrier.list'
+      policy: '🇭🇰 HK Sites'
+      name: 'HK_Carrier.list'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/iniwex5/tools/refs/heads/main/rules/HK-wifi-call.list'
+      policy: '🇭🇰 HK Sites'
+      name: 'HK-wifi-call.list'
+      disabled: false
+  # 🇬🇧 UK Sites
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/UncleC0der/clash-rule/refs/heads/dev/Rule/Clash/Carrier/UK_Carrier.list'
+      policy: '🇬🇧 UK Sites'
+      name: 'UK-Carrier.yaml'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/UncleC0der/clash-rule/refs/heads/dev/Rule/Clash/Finance/Wise.yaml'
+      policy: '🇬🇧 UK Sites'
+      name: 'Wise.yaml'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/iniwex5/tools/refs/heads/main/rules/UK.list'
+      policy: '🇬🇧 UK Sites'
+      name: 'UK.list'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/iniwex5/tools/refs/heads/main/rules/UK-wifi-call.list'
+      policy: '🇬🇧 UK Sites'
+      name: 'UK-wifi-call.list'
+      disabled: false
+  # 🇺🇸 US Sites
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/UncleC0der/clash-rule/refs/heads/dev/Rule/Clash/Carrier/US_Carrier.list'
+      policy: '🇺🇸 US Sites'
+      name: 'US-Carrier.yaml'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/iniwex5/tools/refs/heads/main/rules/US-wifi-call.list'
+      policy: '🇺🇸 US Sites'
+      name: 'US-wifi-call.list'
+      disabled: false
+
+
+  # ✨ AI
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/fmz200/wool_scripts/main/Loon/rule/AI.list'
+      policy: '✨ AI'
+      name: 'AI.list'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/ChatGPT.list'
+      policy: '✨ AI'
+      name: 'ChatGPT.list'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Copilot/Copilot.list'
+      policy: '✨ AI'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Gemini/Gemini.list'
+      policy: '✨ AI'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Claude/Claude.list'
+      policy: '✨ AI'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/AI.list'
+      policy: '✨ AI'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/AI2.list'
+      policy: '✨ AI'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/MetaAi.list'
+      policy: '✨ AI'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/OpenAi.list'
+      policy: '✨ AI'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/Ruleset/AI.list'
+      policy: '✨ AI'
+      disabled: false
+  # 📘 GitHub
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/GitHub/GitHub.list'
+      policy: '📘 GitHub'
+      disabled: false
+  # 🍎 Apple
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Apple.list'
+      policy: '🍎 Apple'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Apple/Apple.list'
+      policy: '🍎 Apple'
+      disabled: false
+  # Ⓜ️ Microsoft
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Bing.list'
+      policy: 'Ⓜ️ Microsoft'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/OneDrive.list'
+      policy: 'Ⓜ️ Microsoft'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Microsoft.list'
+      policy: 'Ⓜ️ Microsoft'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.list'
+      policy: 'Ⓜ️ Microsoft'
+      disabled: false
+  # 🎨 Google
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/GoogleCN.list'
+      policy: '🎨 Google'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Google.list'
+      policy: '🎨 Google'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/GoogleCN.list'
+      policy: '🎨 Google'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/GoogleCNProxyIP.list'
+      policy: '🎨 Google'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/GoogleEarth.list'
+      policy: '🎨 Google'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/GoogleFCM.list'
+      policy: '🎨 Google'
+      disabled: false
+
+
+  # ✈️ Telegram
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Telegram/Telegram.list'
+      policy: '✈️ Telegram'
+      disabled: false
+  # 💁 Line
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Line/Line.yaml'
+      policy: '💁 Line'
+      disabled: false
+
+  # 𝕏 Twitter(X)
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Twitter/Twitter.list'
+      policy: '𝕏 Twitter(X)'
+      disabled: false
+  # 🗣️ Meta
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Facebook/Facebook.list'
+      policy: '🗣️ Meta'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Whatsapp/Whatsapp.yaml'
+      policy: '🗣️ Meta'
+      disabled: false
+  # 👥 Social Media
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Reddit/Reddit.list'
+      policy: '👥 Social Media'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Instagram/Instagram.list'
+      policy: '👥 Social Media'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Threads/Threads.list'
+      policy: '👥 Social Media'
+      disabled: false
+
+  # 🎵 TikTok
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/TikTok/TikTok.list'
+      policy: '🎵 TikTok'
+      disabled: false
+  # ▶️ YouTube
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/YouTube.list'
+      policy: '▶️ YouTube'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.list'
+      policy: '▶️ YouTube'
+      disabled: false
+  # 🏰 Disney
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Disney/Disney.list'
+      policy: '🏰 Disney'
+      disabled: false
+  # 🎥 Netflix
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Netflix/Netflix.list'
+      policy: '🎥 Netflix'
+      disabled: false
+  # 🎬 HBO MAX
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/HBO/HBO.list'
+      policy: '🎬 HBO MAX'
+      disabled: false
+  # 🎵 Spotify
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Spotify/Spotify.list'
+      policy: '🎵 Spotify'
+      disabled: false
+  # 🌏 国内媒体
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaMedia.list'
+      policy: '🌏 国内媒体'
+      disabled: false
+  # 🌍 国外媒体
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyMedia.list'
+      policy: '🌍 国外媒体'
+      disabled: false
+
+  # 🕹️ Game
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Epic/Epic.list'
+      policy: '🕹️ Game'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/EA/EA.list'
+      policy: '🕹️ Game'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Blizzard/Blizzard.list'
+      policy: '🕹️ Game'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/UBI/UBI.list'
+      policy: '🕹️ Game'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Sony/Sony.list'
+      policy: '🕹️ Game'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Nintendo/Nintendo.list'
+      policy: '🕹️ Game'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Epic.list'
+      policy: '🕹️ Game'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Origin.list'
+      policy: '🕹️ Game'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Sony.list'
+      policy: '🕹️ Game'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Steam.list'
+      policy: '🕹️ Game'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Nintendo.list'
+      policy: '🕹️ Game'
+      disabled: false
+  # 🎮 Steam
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Steam/Steam.list'
+      policy: '🎮 Steam'
+      disabled: false
+
+  # 💰 Bybit
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/UncleC0der/clash-rule/refs/heads/dev/Rule/Clash/Crypto/Bybit.yaml'
+      policy: '💰 Bybit'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/iniwex5/tools/refs/heads/main/rules/bybit.list'
+      policy: '💰 Bybit'
+      disabled: false
+  # 💰 Binance
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/iniwex5/tools/refs/heads/main/rules/binance.list'
+      policy: '💰 Binance'
+      disabled: false
+
+
+  # 📦 PT
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PrivateTracker/PrivateTracker.list'
+      policy: '📦 PT'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/iniwex5/tools/refs/heads/main/rules/PT.list'
+      policy: '📦 PT'
+      disabled: false
+  # 🪂 其他站点
+  # - rule_set:
+  # match: 'https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Proxy.list'
+  # policy: '🪂 其他站点'
+  # disabled: false
+#   - rule_set:
+#       match: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Global/Global.list'
+#       policy: '🪂 其他站点'
+#       disabled: false
+
+
+  # 🍃 应用净化
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanProgramAD.list'
+      policy: '🍃 应用净化'
+      name: 'BanProgramAD.list'
+      disabled: false
+  # 🚫 广告拦截
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list'
+      policy: '🚫 广告拦截'
+      disabled: false
+  # 🆎 AdBlock
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Loon/Advertising/Advertising_Domain.list'
+      policy: '🆎 AdBlock'
+      name: 'Advertising_Domain.list'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanEasyList.list'
+      policy: '🆎 AdBlock'
+      name: 'BanEasyList.list'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanEasyListChina.list'
+      policy: '🆎 AdBlock'
+      name: 'BanEasyListChina.list'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanEasyPrivacy.list'
+      policy: '🆎 AdBlock'
+      name: 'BanEasyPrivacy.list'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Loon/Advertising/Advertising.list'
+      policy: '🆎 AdBlock'
+      name: 'Advertising.list'
+      disabled: false
+
+  # ⏱️ 检测
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Check.list'
+      policy: '⏱️ 检测'
+      disabled: false
+
+  # 🌐 全球直连
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list'
+      policy: '🌐 全球直连'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/UnBan.list'
+      policy: '🌐 全球直连'
+      disabled: false
+  - rule_set:
+      match: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/SteamCN.list'
+      policy: '🌐 全球直连'
+      disabled: false
+
+
+# URL 重写列表
+url_rewrites:
+  - match: "(.*google)\\.cn"
+    location: $1.com
+    status_code: 307
+
+# HTTP 头部重写列表
+header_rewrites:
+  - add:
+      match: "^https://example\\.com"
+      name: X-Custom-Header
+      value: custom-value
+      type: request
+  - replace:
+      match: "^https://example\\.com"
+      name: Cache-Control
+      value: no-cache
+      type: response
+  - delete:
+      match: "^https://example\\.com"
+      name: X-Tracking-Id
+      type: request
+
+# HTTP 消息体重写列表
+body_rewrites:
+  # 响应体正则替换
+  - response_regex:
+      match: "^https://example\\.com"
+      find: old_content
+      replace: new_content
+  # 请求体 jq 过滤器
+  - request_jq:
+      match: "^https://api\\.example\\.com/submit"
+      filter: '.data.version = "2.0"'
+
+# 脚本配置列表
+scriptings:
+  - http_request:
+      name: HTTP Script 1
+      match: "^https://example\\.com"
+      script_url: "https://example.com/scripts/request.js"
+      update_interval: 86400
+      max_size: 131072
+      timeout: 30
+      body_required: false
+  - http_response:
+      name: HTTP Script 2
+      match: "^https://example\\.com"
+      script_url: "https://example.com/scripts/response.js"
+      update_interval: 86400
+      max_size: 131072
+      timeout: 30
+      body_required: false
+  - schedule:
+      name: Scheduled Script 1
+      cron: "0 8 * * *"
+      script_url: "https://example.com/scripts/task.js"
+      update_interval: 86400
+      timeout: 30
+  - generic:
+      name: Widget Script 1
+      script_url: "https://example.com/scripts/widget.js"
+      env:
+        API_KEY: "your_api_key"
+  - network:
+      name: Network Script 1
+      script_url: "https://example.com/scripts/network.js"
+
+# Map Local 配置。将匹配的 URL 请求映射到本地自定义响应
+map_locals:
+  - match: "^https://api\\.example\\.com/mock$"
+    status_code: 200
+    headers:
+      Content-Type: application/json
+    body: '{"code": 0, "message": "ok"}'
+
+# MITM 配置。中间人解密，用于修改 HTTPS 流量（URL 重写、头部/消息体重写、脚本等）
+mitm:
+  ca_p12: ""
+  ca_passphrase: "123456"
+  hostnames:
+    includes:
+      - "*.example.com"
+    excludes:
+      - "*.internal.example.com"
+
+# HTTP 抓包配置列表
+http_captures:
+  - "*.example.com"
+
+# 小组件配置。在主屏幕和锁定屏幕上显示自定义内容，由通用脚本渲染
+widgets:
+  - name: "Widget Script 1"
+    env:
+      REGION: "cn"
+
+# 添加订阅时默认使用的外部策略组名称。默认值是空
+default_subscription_group: Subscription
+
+# 添加代理时自动加入的策略组名称。默认值是空
+default_proxy_group: PROXY
+
+# 模块配置列表
+modules:
+  - name: "广告过滤"
+    url: "https://example.com/module.yaml"
+    update_interval: 86400
+    enabled: true
+  - url: "https://example.com/custom.yaml"
+    compat_arguments:
+      API_KEY: "your_api_key"

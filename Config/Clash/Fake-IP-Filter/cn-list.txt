@@ -9978,7 +9978,7 @@
 +.awtmt.com
 +.awuming.com
 +.awx1.com
-+.#server=/ax1x.com/114.114.114.114 # Disabled: https://github.com/felixonmars/dnsmasq-china-list/issues/391
++.ax1x.com
 +.ax2nc4.ren
 +.ax630.com
 +.axatp.com
@@ -25950,7 +25950,7 @@
 +.globalmil.com
 +.globalpingbao.com
 +.globalscanner.com
-+.#server=/globalsign.com/114.114.114.114 # Disabled: very unstable
++.globalsign.com
 +.globalslb.net
 +.globalso.com
 +.globalsources.com
@@ -60909,7 +60909,7 @@
 +.webmaster.me
 +.webmeng.net
 +.webmulu.com
-+.#server=/webnovel.com/114.114.114.114 # Disabled: https://github.com/felixonmars/dnsmasq-china-list/issues/386
++.webnovel.com
 +.webok.me
 +.webond.net
 +.weboss.hk
@@ -62974,7 +62974,7 @@
 +.www.akamai.com
 +.www.amd.com
 +.www.analog.com
-+.#server=/www.bing.com/114.114.114.114 # Disabled: https://github.com/felixonmars/dnsmasq-china-list/commit/449e1faf9816226ba30082cdc54061f520f78f81#r31928598
++.www.bing.com
 +.www.cc
 +.www.cdnetworks.com
 +.www.cg
@@ -62988,7 +62988,7 @@
 +.www.gov.mo
 +.www.htc.com
 +.www.htcsense.com
-+.#server=/www.linkedin.com/114.114.114.114 # Disabled: https://github.com/felixonmars/dnsmasq-china-list/issues/335
++.www.linkedin.com
 +.www.microsoft.com
 +.www.nike.com
 +.www.redhat.com
@@ -71674,7 +71674,7 @@
 +.zookingsoft.com
 +.zookparts.com
 +.zoom-china.com
-+.#server=/zoom.us/114.114.114.114 # Disabled: https://github.com/felixonmars/dnsmasq-china-list/issues/29
++.zoom.us
 +.zoomerstudio.com
 +.zoomeye.org
 +.zoomlion.com
